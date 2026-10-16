@@ -1,7 +1,15 @@
 {
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
-  "workspaceFolder": "/workspaces",
+  "workspaceFolder": "/workspaces/LibreChat",
+  "forwardPorts": [3080],
+  "portsAttributes": {
+    "3080": {
+      "label": "LibreChat",
+      "onAutoForward": "openBrowser",
+      "visibility": "private"
+    }
+  },
   "customizations": {
     "vscode": {
       "extensions": [],
@@ -12,10 +20,7 @@
       }
     }
   },
-  "postCreateCommand": "",
-  "features": {
-    "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
-  },
+  "postCreateCommand": "npm ci --no-audit && npm run frontend",
+  "postStartCommand": "npm run backend > /tmp/librechat-backend.log 2>&1 &",
   "remoteUser": "vscode"
 }
