@@ -17,5 +17,15 @@
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
   },
-  "remoteUser": "vscode"
+  "remoteUser": "vscode",
+  "postStartCommand": "bash /workspaces/LibreChat/.devcontainer/bang-autostart.sh",
+  "forwardPorts": [
+    6080
+  ],
+  "portsAttributes": {
+    "6080": {
+      "label": "BANG IT UP MUSIC — private noVNC",
+      "onAutoForward": "silent"
+    }
+  }
 }
